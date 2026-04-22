@@ -27,7 +27,7 @@ app.get("/items", (req, res) => {
 });
 
 // 2. Segunda api
-app.post("/items", (req, res) => {
+app.post("/items", auth, (req, res) => {
   const { nombre, precio } = req.body;
 
   const nuevoItem = {
@@ -48,7 +48,7 @@ app.post("/items", (req, res) => {
 
 //api 3
 
-app.put("/items/:id", (req, res) => {
+app.put("/items/:id", auth, (req, res) => {
   const id = parseInt(req.params.id);
   const { nombre, precio } = req.body;
 
@@ -72,8 +72,8 @@ app.put("/items/:id", (req, res) => {
 });
 
 //api 4
-app.delete("/items/:id", (req, res) => {
-  const id = parseInt(req.params.id);
+app.delete("/items/:id", auth, (req, res) => {  
+const id = parseInt(req.params.id);
 
   const index = items.findIndex((i) => i.id === id);
 

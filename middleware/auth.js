@@ -4,7 +4,7 @@ const auth = (req, res, next) => {
   if (token !== "123456") {
     return res.status(401).json({
       ok: false,
-      message: "No autorizado"
+      message: "No autorizado",
     });
   }
 
